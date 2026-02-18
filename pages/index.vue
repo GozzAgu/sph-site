@@ -233,46 +233,66 @@
       </p>
       <NuxtLink
         to="/store"
-        class="mt-6 inline-block rounded-full bg-neutral-900 px-6 py-3 text-white hover:bg-neutral-800"
+        class="index-cta group mt-6 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-6 py-3 text-white transition hover:bg-neutral-800 hover:shadow-lg active:scale-[0.98]"
       >
         Get your estimate
+        <span class="transition-transform group-hover:translate-x-0.5">→</span>
       </NuxtLink>
     </section>
 
-    <!-- Need help? Support strip -->
+    <!-- Need help? Support strip – interactive cards -->
     <section ref="supportStripRef" class="scroll-reveal border-t border-neutral-200 bg-white py-16 md:py-20">
-      <div class="mx-auto max-w-3xl px-6 text-center">
-        <h2 class="text-2xl font-light tracking-tight text-neutral-900 md:text-3xl">
+      <div class="mx-auto max-w-4xl px-6">
+        <h2 class="text-center text-2xl font-light tracking-tight text-neutral-900 md:text-3xl">
           Need help?
         </h2>
-        <p class="mt-3 text-neutral-500">
+        <p class="mt-3 text-center text-neutral-500">
           We're here to help. Get in touch or find a store near you.
         </p>
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-6">
+        <div class="mt-10 grid gap-4 sm:grid-cols-3">
           <NuxtLink
             to="/support"
-            class="text-base font-medium text-blue-600 hover:underline"
+            class="index-help-card group flex flex-col items-center rounded-xl border border-neutral-200 bg-neutral-50/50 p-6 text-center transition hover:border-neutral-300 hover:bg-neutral-50 hover:shadow-md"
           >
-            Support
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-200 text-neutral-600 transition group-hover:bg-neutral-300 group-hover:text-neutral-900">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </span>
+            <span class="mt-3 font-medium text-neutral-900">Support</span>
+            <span class="mt-1 text-sm text-neutral-500">FAQs, warranty & repairs</span>
           </NuxtLink>
           <a
             href="#"
-            class="text-base font-medium text-blue-600 hover:underline"
+            class="index-help-card group flex flex-col items-center rounded-xl border border-neutral-200 bg-neutral-50/50 p-6 text-center transition hover:border-neutral-300 hover:bg-neutral-50 hover:shadow-md"
           >
-            Contact
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-200 text-neutral-600 transition group-hover:bg-neutral-300 group-hover:text-neutral-900">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </span>
+            <span class="mt-3 font-medium text-neutral-900">Contact</span>
+            <span class="mt-1 text-sm text-neutral-500">Chat or email us</span>
           </a>
           <a
-            href="#"
-            class="text-base font-medium text-blue-600 hover:underline"
+            href="#find-us"
+            class="index-help-card group flex flex-col items-center rounded-xl border border-neutral-200 bg-neutral-50/50 p-6 text-center transition hover:border-neutral-300 hover:bg-neutral-50 hover:shadow-md"
           >
-            Find a store
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-200 text-neutral-600 transition group-hover:bg-neutral-300 group-hover:text-neutral-900">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </span>
+            <span class="mt-3 font-medium text-neutral-900">Find a store</span>
+            <span class="mt-1 text-sm text-neutral-500">Locations & hours</span>
           </a>
         </div>
       </div>
     </section>
 
     <!-- Find us: map and address -->
-    <section ref="mapRef" class="scroll-reveal border-t border-neutral-200 bg-neutral-50 py-16 md:py-20">
+    <section id="find-us" ref="mapRef" class="scroll-reveal border-t border-neutral-200 bg-neutral-50 py-16 md:py-20">
       <div class="mx-auto max-w-6xl px-6">
         <h2 class="text-2xl font-light tracking-tight text-neutral-900 md:text-3xl">
           Find us
@@ -280,7 +300,20 @@
         <p class="mt-2 text-neutral-600">
           118 Aba Road, Garrison, Port Harcourt
         </p>
-        <div class="mt-8 overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm">
+        <div class="mt-4 flex flex-wrap items-center gap-4">
+          <a
+            :href="mapsDirectionsUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm font-medium text-neutral-900 transition hover:border-neutral-400 hover:bg-neutral-50"
+          >
+            Get directions
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+        <div class="mt-6 overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm transition hover:shadow-md">
           <iframe
             src="https://www.google.com/maps?q=118+aba+road+garrison+portharcourt&output=embed"
             title="SmartPhoneHub store location: 118 Aba Road, Garrison, Port Harcourt"
@@ -312,6 +345,8 @@ const trustRef = ref<HTMLElement | null>(null)
 const tradeRef = ref<HTMLElement | null>(null)
 const supportStripRef = ref<HTMLElement | null>(null)
 const mapRef = ref<HTMLElement | null>(null)
+
+const mapsDirectionsUrl = 'https://www.google.com/maps/dir/?api=1&destination=118+Aba+Road+Garrison+Port+Harcourt'
 
 const productCards = [
   { title: 'Phones', tagline: 'Our most powerful phones.', buyLink: '/store', image: '/images/iphone16-sph2.jpg' },
