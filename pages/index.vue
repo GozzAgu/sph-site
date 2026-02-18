@@ -146,11 +146,11 @@
             Phones, audio, gaming, laptops and accessories.
           </p>
         </div>
-        <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           <article
             v-for="card in productCards"
             :key="card.title"
-            class="group overflow-hidden rounded-2xl border border-neutral-200/80 bg-white shadow-[0_1px_3px_0_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-neutral-300/80 hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.08)]"
+            class="group overflow-hidden rounded-lg border border-neutral-200/80 bg-white shadow-[0_1px_2px_0_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-neutral-300/80 hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.08)]"
           >
             <NuxtLink :to="card.buyLink" class="block">
               <div class="aspect-[4/3] overflow-hidden bg-neutral-100">
@@ -161,14 +161,14 @@
                   format="webp"
                 />
               </div>
-              <div class="border-t border-neutral-100 px-6 py-5">
-                <h3 class="text-lg font-medium text-neutral-900">
+              <div class="border-t border-neutral-100 px-5 py-4">
+                <h3 class="text-sm font-normal text-neutral-900">
                   {{ card.title }}
                 </h3>
-                <p class="mt-1 text-sm text-neutral-500">
+                <p class="mt-0.5 text-xs text-neutral-500">
                   {{ card.tagline }}
                 </p>
-                <span class="mt-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-neutral-400 transition group-hover:text-neutral-900">
+                <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-normal text-neutral-400 transition group-hover:text-neutral-700">
                   Shop
                   <span class="transition-transform group-hover:translate-x-0.5">→</span>
                 </span>
