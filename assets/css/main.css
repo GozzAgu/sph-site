@@ -6,12 +6,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Visible by default so SSR and no-JS show content; JS adds -visible for animation */
 .scroll-reveal {
-  @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  @apply translate-y-8 transition-all duration-700 ease-out;
 }
 
 .scroll-reveal-visible {
-  @apply opacity-100 translate-y-0;
+  @apply translate-y-0;
 }
 
 @keyframes sph-float {

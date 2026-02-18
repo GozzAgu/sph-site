@@ -120,7 +120,7 @@
         </div>
         <div class="mt-16 w-full max-w-xs overflow-hidden rounded-[2rem] border border-white/10 bg-neutral-900/50 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)]">
           <NuxtImg
-            src="/images/applewatch.jpg"
+            src="/images/applewatch-sph.jpg"
             alt="SmartPhoneHub Watch"
             class="aspect-square w-full object-cover object-center"
             format="webp"
@@ -139,10 +139,10 @@
             Shop by category
           </h2>
           <p class="mx-auto mt-4 max-w-md text-neutral-500">
-            Phones, audio, gaming and more.
+            Phones, audio, gaming, laptops and accessories.
           </p>
         </div>
-        <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           <article
             v-for="card in productCards"
             :key="card.title"
@@ -210,42 +210,42 @@ const gridRef = ref<HTMLElement | null>(null)
 const tradeRef = ref<HTMLElement | null>(null)
 
 const productCards = [
-  { title: 'Pro 17', tagline: 'Our most powerful phone.', buyLink: '/store', image: '/images/17pro.jpg' },
-  { title: 'Phone 16', tagline: 'Brilliant in every way.', buyLink: '/store', image: '/images/iphone-16.jpg' },
-  { title: 'Beats Headphones', tagline: 'Premium sound.', buyLink: '/store', image: '/images/beatsheadphone.jpg' },
-  { title: 'Onyx Speaker', tagline: 'Room-filling audio.', buyLink: '/store', image: '/images/onyxspeaker.jpg' },
-  { title: 'Meta Glass', tagline: 'See the future.', buyLink: '/store', image: '/images/metaglass.jpg' },
+  { title: 'Phones', tagline: 'Our most powerful phones.', buyLink: '/store', image: '/images/iphone16-sph2.jpg' },
+  { title: 'Audio', tagline: 'Premium sound.', buyLink: '/store', image: '/images/beatsheadphone.jpg' },
   { title: 'Gaming', tagline: 'Next-level play.', buyLink: '/store', image: '/images/ps5.jpg' },
+  { title: 'Laptops', tagline: 'Power and portability.', buyLink: '/store', image: '/images/laptops-sph.jpg' },
+  { title: 'Accessories', tagline: 'Complete your setup.', buyLink: '/store', image: '/images/metaglass.jpg' },
 ]
 
 const { observe } = useScrollReveal({ threshold: 0.08, rootMargin: '0px 0px -60px 0px' })
 
 onMounted(() => {
-  ;[hero2Ref, hero3Ref, gridRef, tradeRef].forEach((r) => observe(r.value))
+  if (import.meta.client) {
+    ;[hero2Ref, hero3Ref, gridRef, tradeRef].forEach((r) => observe(r.value))
 
-  let raf = 0
-  const updateHeroParallax = () => {
-    raf = 0
-    const el = heroRef.value
-    if (!el) return
-    const rect = el.getBoundingClientRect()
-    // Move background slightly slower than scroll for a parallax feel.
-    heroBgOffsetY.value = Math.round(rect.top * 0.18)
+    let raf = 0
+    const updateHeroParallax = () => {
+      raf = 0
+      const el = heroRef.value
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      heroBgOffsetY.value = Math.round(rect.top * 0.18)
+    }
+
+    const onScroll = () => {
+      if (raf) return
+      raf = window.requestAnimationFrame(updateHeroParallax)
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
+    updateHeroParallax()
+
+    onUnmounted(() => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (raf) window.cancelAnimationFrame(raf)
+    })
   }
-
-  const onScroll = () => {
-    if (raf) return
-    raf = window.requestAnimationFrame(updateHeroParallax)
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true })
-  window.addEventListener('resize', onScroll, { passive: true })
-  updateHeroParallax()
-
-  onUnmounted(() => {
-    window.removeEventListener('scroll', onScroll)
-    window.removeEventListener('resize', onScroll)
-    if (raf) window.cancelAnimationFrame(raf)
-  })
 })
 </script>
