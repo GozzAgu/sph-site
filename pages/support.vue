@@ -1,21 +1,21 @@
 <template>
-  <div class="min-h-screen bg-white">
+  <div class="min-h-screen bg-neutral-950">
     <!-- Hero -->
-    <section class="border-b border-neutral-100 py-20 md:py-28">
+    <section class="border-b border-white/5 py-20 md:py-28">
       <div class="mx-auto max-w-[720px] px-6 text-center">
-        <h1 class="text-3xl font-semibold tracking-tight text-neutral-900 md:text-4xl">
+        <h1 class="text-3xl font-semibold tracking-tight text-white md:text-4xl">
           Support
         </h1>
-        <p class="mt-4 text-lg text-neutral-500 md:text-xl">
+        <p class="mt-4 text-lg text-white/60 md:text-xl">
           We're here to help with your order and devices.
         </p>
       </div>
     </section>
 
     <!-- Product help -->
-    <section class="border-b border-neutral-100 py-14 md:py-16">
+    <section class="border-b border-white/5 py-14 md:py-16">
       <div class="mx-auto max-w-[720px] px-6">
-        <h2 class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-400">
+        <h2 class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
           Product help
         </h2>
         <nav class="mt-8 flex flex-wrap gap-x-10 gap-y-4 md:gap-x-12" aria-label="Product categories">
@@ -23,18 +23,18 @@
             v-for="item in productCategories"
             :key="item"
             href="#"
-            class="support-link group inline-flex items-center text-base text-neutral-900"
+            class="support-link group inline-flex items-center text-base text-white/90"
           >
-            <span class="transition-colors duration-200 group-hover:text-neutral-600">{{ item }}</span>
+            <span class="transition-colors duration-200 group-hover:text-white">{{ item }}</span>
           </a>
         </nav>
       </div>
     </section>
 
     <!-- Quick links -->
-    <section class="border-b border-neutral-100 py-14 md:py-16">
+    <section class="border-b border-white/5 py-14 md:py-16">
       <div class="mx-auto max-w-[720px] px-6">
-        <h2 class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-400">
+        <h2 class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
           Quick links
         </h2>
         <ul class="mt-8 space-y-0" role="list">
@@ -42,14 +42,14 @@
             <NuxtLink
               v-if="link.to"
               :to="link.to"
-              class="support-quick-link block text-base text-neutral-900"
+              class="support-quick-link block text-base text-white/90"
             >
               {{ link.label }}
             </NuxtLink>
             <a
               v-else
               :href="link.href"
-              class="support-quick-link block text-base text-neutral-900"
+              class="support-quick-link block text-base text-white/90"
             >
               {{ link.label }}
             </a>
@@ -61,15 +61,15 @@
     <!-- Repairs & Care -->
     <section class="py-14 md:py-16">
       <div class="mx-auto max-w-[720px] px-6">
-        <h2 class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-400">
+        <h2 class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
           Repairs & Care
         </h2>
-        <p class="mt-6 max-w-xl text-neutral-600 leading-relaxed">
+        <p class="mt-6 max-w-xl text-white/60 leading-relaxed">
           SmartPhoneHub Care covers repairs and support for devices bought from us. We can also help with out-of-warranty repairs.
         </p>
         <a
           href="#"
-          class="support-link group mt-5 inline-flex items-center text-base font-medium text-neutral-900"
+          class="support-link group mt-5 inline-flex items-center text-base font-medium text-white/90"
         >
           Learn more
           <svg class="ml-1.5 h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -99,19 +99,19 @@ const quickLinks = [
 
 <style scoped>
 .support-link {
-  @apply transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-300 focus-visible:ring-offset-2 focus-visible:rounded-sm;
+  @apply transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 focus-visible:rounded-sm;
 }
 .support-link:hover {
-  @apply text-neutral-600;
+  @apply text-white;
 }
 .support-link.group:hover span {
-  @apply text-neutral-600;
+  @apply text-white;
 }
 
 .support-quick-link {
-  @apply -mx-3 rounded-lg px-3 py-3.5 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-300 focus-visible:ring-offset-2;
+  @apply -mx-3 rounded-lg px-3 py-3.5 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950;
 }
 .support-quick-link:hover {
-  @apply text-neutral-600 bg-neutral-50;
+  @apply text-white bg-white/5;
 }
 </style>

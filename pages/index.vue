@@ -93,20 +93,32 @@
       </div>
     </section>
 
-    <!-- Watch: clean, futuristic -->
+    <!-- Watch: image as bg, text above the watch -->
     <section
       id="watch"
       ref="hero3Ref"
-      class="scroll-reveal relative flex min-h-[85vh] flex-col items-center justify-center overflow-hidden bg-neutral-950 px-6 py-24"
+      class="scroll-reveal relative flex min-h-[90vh] flex-col overflow-hidden bg-neutral-950 px-6 pt-24 pb-20 md:min-h-[95vh] md:pt-32 md:pb-28"
     >
-      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(120,119,198,0.08),transparent_70%)]" />
-      <div class="pointer-events-none absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 48px 48px" />
-      <div class="relative z-10 flex flex-col items-center text-center">
-        <span class="text-xs font-medium uppercase tracking-[0.25em] text-neutral-500">Wearables</span>
+      <!-- Full-bleed watch image as background -->
+      <div class="pointer-events-none absolute inset-0">
+        <NuxtImg
+          src="/images/applewatch-sph.jpg"
+          alt=""
+          aria-hidden="true"
+          class="h-full w-full object-cover object-center object-[center_55%] md:object-[center_60%]"
+          format="webp"
+        />
+        <!-- Gradient overlay: darker at top so text reads, lighter at bottom so watch shows -->
+        <div class="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-neutral-950/50 to-neutral-950/30" />
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_40%_at_50%_85%,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
+      </div>
+      <!-- Text and CTAs sitting above the watch -->
+      <div class="relative z-10 flex flex-1 flex-col items-center justify-start pt-8 text-center md:pt-12">
+        <span class="text-xs font-medium uppercase tracking-[0.25em] text-neutral-400">Wearables</span>
         <h2 class="mt-3 text-4xl font-light tracking-tight text-white md:text-6xl">
           Watch
         </h2>
-        <p class="mt-4 max-w-md text-neutral-400 md:text-lg">
+        <p class="mt-4 max-w-md text-neutral-300 md:text-lg">
           The ultimate way to watch your health.
         </p>
         <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:gap-5">
@@ -117,14 +129,6 @@
             Buy
           </NuxtLink>
           <a href="#" class="text-sm text-neutral-400 transition hover:text-white">Learn more</a>
-        </div>
-        <div class="mt-16 w-full max-w-xs overflow-hidden rounded-[2rem] border border-white/10 bg-neutral-900/50 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)]">
-          <NuxtImg
-            src="/images/applewatch-sph.jpg"
-            alt="SmartPhoneHub Watch"
-            class="aspect-square w-full object-cover object-center"
-            format="webp"
-          />
         </div>
       </div>
     </section>
