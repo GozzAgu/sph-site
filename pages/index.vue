@@ -266,6 +266,27 @@
         </div>
       </div>
     </section>
+
+    <!-- Find us: map and address -->
+    <section ref="mapRef" class="scroll-reveal border-t border-neutral-200 bg-neutral-50 py-16 md:py-20">
+      <div class="mx-auto max-w-6xl px-6">
+        <h2 class="text-2xl font-light tracking-tight text-neutral-900 md:text-3xl">
+          Find us
+        </h2>
+        <p class="mt-2 text-neutral-600">
+          118 Aba Road, Garrison, Port Harcourt
+        </p>
+        <div class="mt-8 overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm">
+          <iframe
+            src="https://www.google.com/maps?q=118+aba+road+garrison+portharcourt&output=embed"
+            title="SmartPhoneHub store location: 118 Aba Road, Garrison, Port Harcourt"
+            class="h-[320px] w-full border-0 md:h-[400px]"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          />
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -286,6 +307,7 @@ const gridRef = ref<HTMLElement | null>(null)
 const trustRef = ref<HTMLElement | null>(null)
 const tradeRef = ref<HTMLElement | null>(null)
 const supportStripRef = ref<HTMLElement | null>(null)
+const mapRef = ref<HTMLElement | null>(null)
 
 const productCards = [
   { title: 'Phones', tagline: 'Our most powerful phones.', buyLink: '/store', image: '/images/iphone16-sph2.jpg' },
@@ -299,7 +321,7 @@ const { observe } = useScrollReveal({ threshold: 0.08, rootMargin: '0px 0px -60p
 
 onMounted(() => {
   if (import.meta.client) {
-    ;[hero2Ref, hero3Ref, gridRef, trustRef, tradeRef, supportStripRef].forEach((r) => observe(r.value))
+    ;[hero2Ref, hero3Ref, gridRef, trustRef, tradeRef, supportStripRef, mapRef].forEach((r) => observe(r.value))
 
     let raf = 0
     const updateHeroParallax = () => {
