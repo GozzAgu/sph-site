@@ -175,6 +175,50 @@
       </div>
     </section>
 
+    <!-- Trust strip: free delivery, warranty, support, secure payment -->
+    <section ref="trustRef" class="scroll-reveal border-t border-neutral-200 bg-white py-14 md:py-16">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="grid gap-10 text-center sm:grid-cols-2 lg:grid-cols-4">
+          <div class="flex flex-col items-center">
+            <span class="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-100 text-neutral-600" aria-hidden="true">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+              </svg>
+            </span>
+            <h3 class="mt-3 text-sm font-semibold text-neutral-900">Free delivery</h3>
+            <p class="mt-1 text-sm text-neutral-500">On orders over a set amount</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <span class="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-100 text-neutral-600" aria-hidden="true">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </span>
+            <h3 class="mt-3 text-sm font-semibold text-neutral-900">Warranty</h3>
+            <p class="mt-1 text-sm text-neutral-500">Coverage on every purchase</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <span class="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-100 text-neutral-600" aria-hidden="true">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </span>
+            <h3 class="mt-3 text-sm font-semibold text-neutral-900">Expert support</h3>
+            <p class="mt-1 text-sm text-neutral-500">We're here when you need us</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <span class="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-100 text-neutral-600" aria-hidden="true">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </span>
+            <h3 class="mt-3 text-sm font-semibold text-neutral-900">Secure payment</h3>
+            <p class="mt-1 text-sm text-neutral-500">Safe checkout every time</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Trade In -->
     <section ref="tradeRef" class="scroll-reveal border-t border-neutral-200 bg-neutral-50 py-16 text-center">
       <h2 class="text-2xl font-semibold text-neutral-900 md:text-3xl">
@@ -189,6 +233,38 @@
       >
         Get your estimate
       </NuxtLink>
+    </section>
+
+    <!-- Need help? Support strip -->
+    <section ref="supportStripRef" class="scroll-reveal border-t border-neutral-200 bg-white py-16 md:py-20">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <h2 class="text-2xl font-light tracking-tight text-neutral-900 md:text-3xl">
+          Need help?
+        </h2>
+        <p class="mt-3 text-neutral-500">
+          We're here to help. Get in touch or find a store near you.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-6">
+          <NuxtLink
+            to="/support"
+            class="text-base font-medium text-blue-600 hover:underline"
+          >
+            Support
+          </NuxtLink>
+          <a
+            href="#"
+            class="text-base font-medium text-blue-600 hover:underline"
+          >
+            Contact
+          </a>
+          <a
+            href="#"
+            class="text-base font-medium text-blue-600 hover:underline"
+          >
+            Find a store
+          </a>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -207,7 +283,9 @@ const heroBgStyle = computed(() => ({
 const hero2Ref = ref<HTMLElement | null>(null)
 const hero3Ref = ref<HTMLElement | null>(null)
 const gridRef = ref<HTMLElement | null>(null)
+const trustRef = ref<HTMLElement | null>(null)
 const tradeRef = ref<HTMLElement | null>(null)
+const supportStripRef = ref<HTMLElement | null>(null)
 
 const productCards = [
   { title: 'Phones', tagline: 'Our most powerful phones.', buyLink: '/store', image: '/images/iphone16-sph2.jpg' },
@@ -221,7 +299,7 @@ const { observe } = useScrollReveal({ threshold: 0.08, rootMargin: '0px 0px -60p
 
 onMounted(() => {
   if (import.meta.client) {
-    ;[hero2Ref, hero3Ref, gridRef, tradeRef].forEach((r) => observe(r.value))
+    ;[hero2Ref, hero3Ref, gridRef, trustRef, tradeRef, supportStripRef].forEach((r) => observe(r.value))
 
     let raf = 0
     const updateHeroParallax = () => {
