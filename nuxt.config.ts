@@ -4,6 +4,15 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
 
+  app: {
+    head: {
+      title: 'SmartPhoneHub',
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/sphLogo.png' }
+      ]
+    }
+  },
+
   modules: [
     '@nuxt/eslint',
     '@nuxt/fonts',
