@@ -63,3 +63,13 @@ html {
   will-change: transform;
   pointer-events: none;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .sph-float {
+    animation: none;
+    transform: none;
+  }
+  .sph-sheen {
+    animation: none;
+  }
+}

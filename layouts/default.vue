@@ -127,34 +127,38 @@
         <p class="border-b border-neutral-200 pb-4">
           * Consumer finance is subject to eligibility and approval. Terms apply.
         </p>
-        <nav class="mt-4 grid gap-4 md:grid-cols-4">
+        <nav class="mt-4 grid gap-6 sm:grid-cols-2 md:grid-cols-4" aria-label="Footer">
           <div>
-            <p class="font-semibold text-neutral-700">Shop and Learn</p>
+            <p class="font-semibold text-neutral-700">Shop</p>
             <ul class="mt-2 space-y-1">
               <li><NuxtLink to="/store" class="hover:underline">Store</NuxtLink></li>
+              <li><NuxtLink to="/store/phones" class="hover:underline">Phones</NuxtLink></li>
+              <li><NuxtLink to="/store/laptops" class="hover:underline">Laptops</NuxtLink></li>
+              <li><NuxtLink to="/store/accessories" class="hover:underline">Accessories</NuxtLink></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-neutral-700">Support</p>
+            <ul class="mt-2 space-y-1">
               <li><NuxtLink to="/support" class="hover:underline">Support</NuxtLink></li>
-              <li><a href="#" class="hover:underline">Accessories</a></li>
+              <li><a href="#" class="hover:underline">Contact</a></li>
+              <li><NuxtLink to="/#find-us" class="hover:underline">Find a store</NuxtLink></li>
+              <li><a href="#" class="hover:underline">Repairs & Care</a></li>
             </ul>
           </div>
           <div>
-            <p class="font-semibold text-neutral-700">Account</p>
+            <p class="font-semibold text-neutral-700">Orders</p>
             <ul class="mt-2 space-y-1">
-              <li><a href="#" class="hover:underline">Manage Your Account</a></li>
-              <li><a href="#" class="hover:underline">Order Status</a></li>
-            </ul>
-          </div>
-          <div>
-            <p class="font-semibold text-neutral-700">Entertainment</p>
-            <ul class="mt-2 space-y-1">
-              <li><a href="#" class="hover:underline">Music</a></li>
-              <li><a href="#" class="hover:underline">TV+</a></li>
+              <li><a href="#" class="hover:underline">Order status</a></li>
+              <li><a href="#" class="hover:underline">Returns</a></li>
+              <li><a href="#" class="hover:underline">Warranty</a></li>
             </ul>
           </div>
           <div>
             <p class="font-semibold text-neutral-700">About</p>
             <ul class="mt-2 space-y-1">
-              <li><a href="#" class="hover:underline">Newsroom</a></li>
               <li><a href="#" class="hover:underline">Contact</a></li>
+              <li><NuxtLink to="/#find-us" class="hover:underline">Find us</NuxtLink></li>
             </ul>
           </div>
         </nav>
