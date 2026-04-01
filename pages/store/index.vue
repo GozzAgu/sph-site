@@ -213,8 +213,10 @@ defineOptions({
   name: 'StorePage',
 })
 
-const heroHeadline = 'The best way to buy the products you love.'
-const latestHeadline = "Take a look at what's new right now."
+const { data: storeContent } = await useStoreContent()
+
+const heroHeadline = computed(() => storeContent.value?.heroHeadline ?? 'The best way to buy the products you love.')
+const latestHeadline = computed(() => storeContent.value?.latestHeadline ?? "Take a look at what's new right now.")
 
 const heroTyped = ref('')
 const typewriterComplete = ref(false)
@@ -230,15 +232,15 @@ function startLatestTypewriter() {
     return
   latestTypewriterStarted = true
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    latestTyped.value = latestHeadline
+    latestTyped.value = latestHeadline.value
     latestTypewriterComplete.value = true
     return
   }
   const msPerChar = 42
   let i = 0
   const tick = () => {
-    if (i <= latestHeadline.length) {
-      latestTyped.value = latestHeadline.slice(0, i)
+    if (i <= latestHeadline.value.length) {
+      latestTyped.value = latestHeadline.value.slice(0, i)
       i += 1
       latestTypewriterTimer = setTimeout(tick, msPerChar)
     }
@@ -257,33 +259,10 @@ function scrollCategoryStrip(direction: number) {
   el.scrollBy({ left: direction * 296, behavior: 'smooth' })
 }
 
-const categories = [
-  { name: 'Phones', slug: 'phones', image: '/images/iphone16-sph2.jpg' },
-  { name: 'Audio', slug: 'audio', image: '/images/beatsheadphone.jpg' },
-  { name: 'Gaming', slug: 'gaming', image: '/images/ps5.jpg' },
-  { name: 'Laptops', slug: 'laptops', image: '/images/laptops-sph.jpg' },
-  { name: 'Accessories', slug: 'accessories', image: '/images/metaglass.jpg' },
-]
-
-const latestProducts = [
-  { title: 'Pro 17', tagline: 'All out Pro.', price: 'From £1,099 or £36.63/mo. for 30 mo. at 0% interest*', image: '/images/17pro.jpg', link: '#' },
-  { title: 'Laptop', tagline: 'Speed of lightness.', price: 'From £999 or £29.84/mo. for 36 mo. at 4.9% interest', image: '/images/laptops-sph.jpg', link: '#' },
-  { title: 'Watch', tagline: 'Inspired by the power of connection.', price: 'From £99', image: '/images/applewatch-sph.jpg', link: '#' },
-]
-
-const experienceCards = [
-  { tag: 'SMARTPHONEHUB', title: 'SmartPhoneHub experience.', subtitle: 'Get things done effortlessly across your devices.', dark: false },
-  { tag: 'CONTINUITY', title: 'Powerful alone. Superpowered together.', subtitle: null, dark: false },
-  { tag: 'STORE APP', title: 'Put your bow on it.', subtitle: 'Make the gift unmistakably theirs with a personalised message.', dark: false },
-]
-
-const quickLinks = [
-  { label: 'Find a Store', to: '/', external: false },
-  { label: 'Order Status', href: '#', external: true },
-  { label: 'Shopping Help', href: '#', external: true },
-  { label: 'Returns', href: '#', external: true },
-  { label: 'Your Saves', href: '#', external: true },
-]
+const categories = computed(() => storeContent.value?.categories ?? [])
+const latestProducts = computed(() => storeContent.value?.latestProducts ?? [])
+const experienceCards = computed(() => storeContent.value?.experienceCards ?? [])
+const quickLinks = computed(() => storeContent.value?.quickLinks ?? [])
 
 const latestRef = ref<HTMLElement | null>(null)
 const experienceRef = ref<HTMLElement | null>(null)
@@ -299,9 +278,9 @@ onMounted(() => {
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   if (reducedMotion) {
-    heroTyped.value = heroHeadline
+    heroTyped.value = heroHeadline.value
     typewriterComplete.value = true
-    latestTyped.value = latestHeadline
+    latestTyped.value = latestHeadline.value
     latestTypewriterComplete.value = true
     latestTypewriterStarted = true
     return
@@ -310,8 +289,8 @@ onMounted(() => {
   const msPerChar = 42
   let hi = 0
   const heroTick = () => {
-    if (hi <= heroHeadline.length) {
-      heroTyped.value = heroHeadline.slice(0, hi)
+    if (hi <= heroHeadline.value.length) {
+      heroTyped.value = heroHeadline.value.slice(0, hi)
       hi += 1
       typewriterTimer = setTimeout(heroTick, msPerChar)
     }

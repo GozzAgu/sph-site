@@ -59,49 +59,12 @@ defineOptions({
 
 const route = useRoute()
 const category = computed(() => (route.params.category as string) ?? '')
+const { data: storeContent } = await useStoreContent()
 
-const categoryConfig: Record<string, { name: string; description: string; products: { title: string; tagline: string; price: string; image: string }[] }> = {
-  phones: {
-    name: 'Phones',
-    description: 'The latest smartphones. Power, camera, and battery that keep up with you.',
-    products: [
-      { title: 'Pro 17', tagline: 'All out Pro.', price: 'From £1,099', image: '/images/17pro.jpg' },
-      { title: 'Pro 16', tagline: 'Pro. Beyond.', price: 'From £999', image: '/images/iphone16-sph2.jpg' },
-    ],
-  },
-  audio: {
-    name: 'Audio',
-    description: 'Headphones and earbuds for music, calls, and immersive sound.',
-    products: [
-      { title: 'Beats Studio', tagline: 'Premium sound.', price: 'From £299', image: '/images/beatsheadphone.jpg' },
-    ],
-  },
-  gaming: {
-    name: 'Gaming',
-    description: 'Consoles, controllers, and gear for the ultimate play.',
-    products: [
-      { title: 'Console', tagline: 'Next-level play.', price: 'From £449', image: '/images/ps5.jpg' },
-    ],
-  },
-  laptops: {
-    name: 'Laptops',
-    description: 'Light, powerful laptops built to go anywhere.',
-    products: [
-      { title: 'Laptop', tagline: 'Speed of lightness.', price: 'From £999', image: '/images/laptops-sph.jpg' },
-    ],
-  },
-  accessories: {
-    name: 'Accessories',
-    description: 'Cases, chargers, and everything to complete your setup.',
-    products: [
-      { title: 'Smart Glasses', tagline: 'Complete your setup.', price: 'From £199', image: '/images/metaglass.jpg' },
-    ],
-  },
-}
-
-const categoryName = computed(() => categoryConfig[category.value]?.name ?? formatCategoryName(category.value))
-const categoryDescription = computed(() => categoryConfig[category.value]?.description ?? `Shop ${categoryName.value} at SmartPhoneHub.`)
-const categoryProducts = computed(() => categoryConfig[category.value]?.products ?? [])
+const categoryData = computed(() => storeContent.value?.categories.find(c => c.slug === category.value))
+const categoryName = computed(() => categoryData.value?.name ?? formatCategoryName(category.value))
+const categoryDescription = computed(() => categoryData.value?.description ?? `Shop ${categoryName.value} at SmartPhoneHub.`)
+const categoryProducts = computed(() => categoryData.value?.products ?? [])
 
 function formatCategoryName(slug: string) {
   return slug.charAt(0).toUpperCase() + slug.slice(1).toLowerCase()
