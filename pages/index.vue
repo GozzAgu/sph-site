@@ -226,13 +226,13 @@
           <p
             class="index-reveal-item index-reveal-item--3 mx-auto mt-4 max-w-md text-neutral-500 md:text-lg"
           >
-            Phones, audio, gaming, laptops and accessories.
+            {{ shopCategoryBlurb }}
           </p>
         </div>
         <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 md:mt-16 md:gap-6">
           <article
-            v-for="card in productCards"
-            :key="card.title"
+            v-for="card in indexCategoryCards"
+            :key="card.slug"
             class="index-cat-card group relative overflow-hidden rounded-2xl border border-neutral-200/70 bg-gradient-to-b from-white to-neutral-50/90 shadow-[0_18px_40px_-24px_rgba(0,0,0,0.12)] ring-1 ring-neutral-900/[0.03] hover:-translate-y-2 hover:border-neutral-300/90 hover:shadow-[0_28px_56px_-28px_rgba(0,0,0,0.22)]"
           >
             <NuxtLink :to="card.buyLink" class="block outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/20 focus-visible:ring-offset-2">
@@ -534,13 +534,40 @@ const mapRef = ref<HTMLElement | null>(null)
 
 const mapsDirectionsUrl = 'https://www.google.com/maps/dir/?api=1&destination=118+Aba+Road+Garrison+Port+Harcourt'
 
-const productCards = [
-  { title: 'Phones', tagline: 'Our most powerful phones.', buyLink: '/store', image: '/images/iphone16-sph2.jpg' },
-  { title: 'Audio', tagline: 'Premium sound.', buyLink: '/store', image: '/images/beatsheadphone.jpg' },
-  { title: 'Gaming', tagline: 'Next-level play.', buyLink: '/store', image: '/images/ps5.jpg' },
-  { title: 'Laptops', tagline: 'Power and portability.', buyLink: '/store', image: '/images/laptops-sph.jpg' },
-  { title: 'Accessories', tagline: 'Complete your setup.', buyLink: '/store', image: '/images/metaglass.jpg' },
-]
+const { data: storeContent } = await useStoreContent()
+
+const indexCategoryBlurbFallback = 'Phones, audio, gaming, laptops and accessories.'
+
+function formatCategoryNameList(names: string[]) {
+  const parts = names.map(n => n.trim()).filter(Boolean)
+  if (parts.length === 0)
+    return ''
+  const lower = parts.map(n => n.charAt(0).toUpperCase() + n.slice(1).toLowerCase())
+  if (lower.length === 1)
+    return `${lower[0]}.`
+  if (lower.length === 2)
+    return `${lower[0]} and ${lower[1]}.`
+  return `${lower.slice(0, -1).join(', ')}, and ${lower[lower.length - 1]}.`
+}
+
+const shopCategoryBlurb = computed(() => {
+  const cats = storeContent.value?.categories ?? []
+  if (cats.length === 0)
+    return indexCategoryBlurbFallback
+  const line = formatCategoryNameList(cats.map(c => c.name))
+  return line || indexCategoryBlurbFallback
+})
+
+const indexCategoryCards = computed(() => {
+  const cats = storeContent.value?.categories ?? []
+  return cats.map(cat => ({
+    slug: cat.slug,
+    title: cat.name,
+    tagline: cat.description?.trim() || `Shop ${cat.name}.`,
+    buyLink: `/store/${cat.slug}`,
+    image: cat.image,
+  }))
+})
 
 const { observe } = useScrollReveal({ threshold: 0.08, rootMargin: '0px 0px -60px 0px' })
 
