@@ -11,6 +11,7 @@
         </NuxtLink>
         <div class="hidden items-center gap-8 md:flex">
           <NuxtLink to="/store" class="text-neutral-900 hover:opacity-80">Store</NuxtLink>
+          <NuxtLink to="/repairs" class="text-neutral-900 hover:opacity-80">Repairs</NuxtLink>
           <NuxtLink to="/support" class="text-neutral-900 hover:opacity-80">Support</NuxtLink>
         </div>
         <div class="flex items-center gap-5">
@@ -82,6 +83,15 @@
               </li>
               <li>
                 <NuxtLink
+                  to="/repairs"
+                  class="block py-4 text-[1.75rem] font-semibold leading-tight text-neutral-900 hover:opacity-70"
+                  @click="mobileMenuOpen = false"
+                >
+                  Repairs
+                </NuxtLink>
+              </li>
+              <li>
+                <NuxtLink
                   to="/support"
                   class="block py-4 text-[1.75rem] font-semibold leading-tight text-neutral-900 hover:opacity-70"
                   @click="mobileMenuOpen = false"
@@ -141,9 +151,9 @@
             <p class="font-semibold text-neutral-700">Support</p>
             <ul class="mt-2 space-y-1">
               <li><NuxtLink to="/support" class="hover:underline">Support</NuxtLink></li>
+              <li><NuxtLink to="/repairs" class="hover:underline">Repairs</NuxtLink></li>
               <li><a href="#" class="hover:underline">Contact</a></li>
               <li><NuxtLink to="/#find-us" class="hover:underline">Find a store</NuxtLink></li>
-              <li><a href="#" class="hover:underline">Repairs & Care</a></li>
             </ul>
           </div>
           <div>

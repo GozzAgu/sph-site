@@ -35,6 +35,10 @@
         />
       </div>
       <div class="relative z-10 flex flex-col items-center text-center">
+        <div
+          class="hero-home-enter hero-home-enter--hairline mb-5 h-px w-14 bg-gradient-to-r from-transparent via-white/40 to-transparent md:mb-6 md:w-16"
+          aria-hidden="true"
+        />
         <span
           class="hero-home-enter hero-home-enter--welcome text-xs font-medium uppercase tracking-[0.3em] text-neutral-500"
         >
@@ -73,6 +77,30 @@
           >
             Learn more
           </a>
+        </div>
+        <div
+          class="hero-home-enter hero-home-enter--pills mt-12 flex max-w-xl flex-wrap items-center justify-center gap-2.5 px-2 sm:gap-3"
+        >
+          <NuxtLink
+            to="/repairs"
+            class="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.06] px-4 py-2 text-xs font-medium text-white/90 backdrop-blur-md transition duration-300 hover:border-white/25 hover:bg-white/10 sm:text-sm"
+          >
+            Repairs
+          </NuxtLink>
+          <NuxtLink
+            to="/support"
+            class="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.06] px-4 py-2 text-xs font-medium text-white/90 backdrop-blur-md transition duration-300 hover:border-white/25 hover:bg-white/10 sm:text-sm"
+          >
+            Support
+          </NuxtLink>
+          <NuxtLink
+            to="/#find-us"
+            class="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.06] px-4 py-2 text-xs font-medium text-white/90 backdrop-blur-md transition duration-300 hover:border-white/25 hover:bg-white/10 sm:text-sm"
+          >
+            Visit us
+          </NuxtLink>
+          <span class="hidden text-xs text-white/30 sm:inline" aria-hidden="true">·</span>
+          <span class="text-xs text-white/40 sm:text-sm">Free delivery on qualifying orders</span>
         </div>
       </div>
       <!-- Scroll cue -->
@@ -209,6 +237,69 @@
       </div>
     </section>
 
+    <!-- Spotlight: editorial picks -->
+    <section
+      ref="spotlightRef"
+      class="index-spotlight-section scroll-reveal relative overflow-hidden border-t border-white/[0.06] bg-neutral-950 py-20 md:py-28"
+    >
+      <div
+        class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_45%_at_50%_0%,rgba(120,119,198,0.1),transparent_60%)]"
+        aria-hidden="true"
+      />
+      <div class="relative z-10 mx-auto max-w-6xl px-6">
+        <div class="index-spotlight-header mx-auto max-w-2xl text-center">
+          <span
+            class="index-spotlight-reveal index-spotlight-reveal--1 text-xs font-medium uppercase tracking-[0.28em] text-neutral-500"
+          >Spotlight</span>
+          <h2 class="index-spotlight-reveal index-spotlight-reveal--2 mt-3 text-3xl font-light tracking-tight text-white md:text-4xl">
+            This week at SmartPhoneHub
+          </h2>
+          <p class="index-spotlight-reveal index-spotlight-reveal--3 mt-3 text-sm text-white/50 md:text-base">
+            New arrivals, bundles, and staff picks worth a look.
+          </p>
+        </div>
+        <ul class="mt-12 grid gap-5 md:grid-cols-3 md:gap-6" role="list">
+          <li
+            v-for="spot in spotlightItems"
+            :key="spot.title"
+            class="index-spotlight-card group"
+          >
+            <NuxtLink
+              :to="spot.to"
+              class="block overflow-hidden rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.07] to-white/[0.02] outline-none transition duration-500 hover:border-white/15 hover:shadow-[0_28px_56px_-28px_rgba(0,0,0,0.85)] focus-visible:ring-2 focus-visible:ring-white/25 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950"
+            >
+              <div class="relative aspect-[16/10] overflow-hidden bg-neutral-900">
+                <NuxtImg
+                  :src="spot.image"
+                  alt=""
+                  class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+                  format="webp"
+                />
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" aria-hidden="true" />
+                <span class="absolute left-3 top-3 rounded-full bg-black/50 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/95 backdrop-blur-sm">
+                  {{ spot.tag }}
+                </span>
+              </div>
+              <div class="p-5">
+                <h3 class="text-[1.05rem] font-medium leading-snug text-white">
+                  {{ spot.title }}
+                </h3>
+                <p class="mt-2 text-sm leading-relaxed text-white/45">
+                  {{ spot.blurb }}
+                </p>
+                <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-sky-300/90 transition group-hover:text-sky-200">
+                  {{ spot.cta }}
+                  <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- Shop by category -->
     <section ref="gridRef" class="index-shop-section scroll-reveal relative overflow-hidden bg-white py-24 md:py-32">
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(120,119,198,0.06),transparent)]" />
@@ -247,6 +338,12 @@
                   class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-white/[0.08] opacity-70 transition duration-500 group-hover:opacity-95"
                   aria-hidden="true"
                 />
+                <span
+                  class="absolute left-3 top-3 flex h-11 w-11 items-center justify-center rounded-xl bg-white/90 text-[rgba(100,95,180,0.95)] shadow-md ring-1 ring-black/5 backdrop-blur-sm"
+                  aria-hidden="true"
+                >
+                  <SupportProductIcon :name="card.icon" />
+                </span>
               </div>
               <div class="relative border-t border-neutral-100/90 px-5 py-5">
                 <h3 class="text-base font-medium tracking-tight text-neutral-900">
@@ -271,6 +368,17 @@
     <!-- Trust strip -->
     <section ref="trustRef" class="index-trust-section scroll-reveal border-t border-neutral-200/80 bg-gradient-to-b from-white to-neutral-50/50 py-16 md:py-20">
       <div class="mx-auto max-w-6xl px-6">
+        <div class="index-trust-header mx-auto mb-12 max-w-2xl text-center md:mb-14">
+          <span
+            class="index-trust-heading-reveal index-trust-heading-reveal--1 text-xs font-medium uppercase tracking-[0.22em] text-neutral-500"
+          >Peace of mind</span>
+          <h2 class="index-trust-heading-reveal index-trust-heading-reveal--2 mt-3 text-2xl font-light tracking-tight text-neutral-900 md:text-3xl">
+            Shop with confidence
+          </h2>
+          <p class="index-trust-heading-reveal index-trust-heading-reveal--3 mt-3 text-sm text-neutral-500 md:text-base">
+            The extras that make buying and owning your tech easier.
+          </p>
+        </div>
         <div class="grid gap-6 text-center sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6">
           <div
             class="index-trust-pillar group flex flex-col items-center rounded-2xl border border-neutral-200/80 bg-white/80 px-5 py-8 shadow-[0_12px_32px_-20px_rgba(0,0,0,0.12)] backdrop-blur-sm transition duration-500 ease-out hover:-translate-y-1.5 hover:border-neutral-300 hover:bg-white hover:shadow-[0_20px_40px_-24px_rgba(0,0,0,0.15)]"
@@ -357,9 +465,38 @@
         >
           Get credit when you trade in your eligible device.
         </p>
+        <ul
+          class="index-reveal-item index-reveal-item--3 mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-neutral-500"
+          role="list"
+        >
+          <li class="flex items-center gap-2">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-white/10 text-emerald-300/90" aria-hidden="true">
+              <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            Instant estimate in store
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-white/10 text-emerald-300/90" aria-hidden="true">
+              <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            Credit toward your next buy
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-white/10 text-emerald-300/90" aria-hidden="true">
+              <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            Data wipe guidance
+          </li>
+        </ul>
         <NuxtLink
           to="/store"
-          class="index-reveal-item index-reveal-item--3 index-trade-cta group mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-neutral-950 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.5)] transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-neutral-100 hover:shadow-[0_18px_48px_-14px_rgba(120,119,198,0.45)] active:scale-[0.98]"
+          class="index-reveal-item index-reveal-item--4 index-trade-cta group mt-10 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-neutral-950 shadow-[0_12px_40px_-12px_rgba(0,0,0,0.5)] transition duration-500 ease-out hover:-translate-y-0.5 hover:bg-neutral-100 hover:shadow-[0_18px_48px_-14px_rgba(120,119,198,0.45)] active:scale-[0.98]"
         >
           Get your estimate
           <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -370,17 +507,20 @@
     <!-- Need help? -->
     <section ref="supportStripRef" class="index-support-section scroll-reveal border-t border-neutral-200/80 bg-gradient-to-b from-white to-neutral-50/40 py-20 md:py-24">
       <div class="mx-auto max-w-4xl px-6">
+        <p class="index-reveal-item index-reveal-item--1 text-center text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
+          We’re here for you
+        </p>
         <h2
-          class="index-reveal-item index-reveal-item--1 text-center text-2xl font-light tracking-tight text-neutral-900 md:text-3xl"
+          class="index-reveal-item index-reveal-item--2 text-center text-2xl font-light tracking-tight text-neutral-900 md:text-3xl"
         >
           Need help?
         </h2>
         <p
-          class="index-reveal-item index-reveal-item--2 mx-auto mt-3 max-w-lg text-center text-neutral-500 md:text-base"
+          class="index-reveal-item index-reveal-item--3 mx-auto mt-3 max-w-lg text-center text-neutral-500 md:text-base"
         >
           We're here to help. Get in touch or find a store near you.
         </p>
-        <div class="mt-12 grid gap-5 sm:grid-cols-3 md:mt-14 md:gap-6">
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 md:mt-14 md:gap-6 lg:grid-cols-4">
           <NuxtLink
             to="/support"
             class="index-help-card group relative flex flex-col items-center overflow-hidden rounded-2xl border border-neutral-200/80 bg-white/90 p-8 text-center shadow-[0_16px_40px_-28px_rgba(0,0,0,0.12)] backdrop-blur-sm transition duration-500 ease-out hover:border-[rgba(120,119,198,0.35)] hover:bg-white hover:shadow-[0_24px_48px_-28px_rgba(120,119,198,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/15 focus-visible:ring-offset-2"
@@ -436,6 +576,25 @@
             <span class="mt-4 font-semibold text-neutral-900">Find a store</span>
             <span class="mt-1.5 text-sm text-neutral-500">Locations & hours</span>
           </a>
+          <NuxtLink
+            to="/repairs"
+            class="index-help-card group relative flex flex-col items-center overflow-hidden rounded-2xl border border-neutral-200/80 bg-white/90 p-8 text-center shadow-[0_16px_40px_-28px_rgba(0,0,0,0.12)] backdrop-blur-sm transition duration-500 ease-out hover:border-[rgba(120,119,198,0.35)] hover:bg-white hover:shadow-[0_24px_48px_-28px_rgba(120,119,198,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/15 focus-visible:ring-offset-2"
+          >
+            <span
+              class="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(120,119,198,0.5)] to-transparent opacity-0 transition duration-500 group-hover:opacity-100"
+              aria-hidden="true"
+            />
+            <span
+              class="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-neutral-100 to-neutral-50 text-neutral-700 shadow-sm ring-1 ring-neutral-200/80 transition duration-500 group-hover:scale-110 group-hover:from-[rgba(120,119,198,0.15)] group-hover:to-white group-hover:text-neutral-900"
+            >
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </span>
+            <span class="mt-4 font-semibold text-neutral-900">Repairs</span>
+            <span class="mt-1.5 text-sm text-neutral-500">Screens, battery, and more</span>
+          </NuxtLink>
         </div>
       </div>
     </section>
@@ -447,35 +606,62 @@
       class="index-map-section scroll-reveal border-t border-neutral-200/80 bg-gradient-to-b from-neutral-50 to-white py-16 md:py-20"
     >
       <div class="mx-auto max-w-6xl px-6">
-        <h2 class="text-2xl font-light tracking-tight text-neutral-900 md:text-3xl">
-          Find us
-        </h2>
-        <p class="mt-2 max-w-xl text-neutral-600">
-          118 Aba Road, Garrison, Port Harcourt
-        </p>
-        <div class="mt-5 flex flex-wrap items-center gap-4">
-          <a
-            :href="mapsDirectionsUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group inline-flex items-center gap-2 rounded-full border border-neutral-300/90 bg-white px-5 py-2.5 text-sm font-medium text-neutral-900 shadow-sm transition duration-300 ease-out hover:-translate-y-0.5 hover:border-neutral-400 hover:shadow-md"
+        <div class="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-12">
+          <div>
+            <p class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
+              Visit
+            </p>
+            <h2 class="mt-2 text-2xl font-light tracking-tight text-neutral-900 md:text-3xl">
+              Find us
+            </h2>
+            <p class="mt-3 max-w-md text-base leading-relaxed text-neutral-600">
+              118 Aba Road, Garrison, Port Harcourt
+            </p>
+            <div class="mt-6 flex flex-wrap items-center gap-3">
+              <a
+                :href="mapsDirectionsUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group inline-flex items-center gap-2 rounded-full border border-neutral-300/90 bg-white px-5 py-2.5 text-sm font-medium text-neutral-900 shadow-sm transition duration-300 ease-out hover:-translate-y-0.5 hover:border-neutral-400 hover:shadow-md"
+              >
+                Get directions
+                <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+              <NuxtLink
+                to="/support"
+                class="text-sm font-medium text-neutral-600 underline-offset-4 transition hover:text-neutral-900 hover:underline"
+              >
+                Support
+              </NuxtLink>
+            </div>
+            <div class="mt-8 rounded-2xl border border-neutral-200/90 bg-gradient-to-br from-white to-neutral-50/80 p-5 shadow-[0_12px_32px_-24px_rgba(0,0,0,0.12)] ring-1 ring-neutral-900/[0.03]">
+              <h3 class="text-sm font-semibold text-neutral-900">
+                Store hours
+              </h3>
+              <ul class="mt-3 space-y-2 text-sm text-neutral-600" role="list">
+                <li class="flex justify-between gap-4">
+                  <span>Mon-Sat</span>
+                  <span class="text-neutral-900">10:00-18:00</span>
+                </li>
+              </ul>
+              <p class="mt-4 text-xs text-neutral-500">
+                Sunday and holiday hours may vary. Call ahead to confirm.
+              </p>
+            </div>
+          </div>
+          <div
+            class="index-map-frame group overflow-hidden rounded-2xl border border-neutral-200/90 bg-white shadow-[0_20px_48px_-28px_rgba(0,0,0,0.14)] ring-1 ring-neutral-900/[0.03] transition duration-500 ease-out hover:shadow-[0_28px_56px_-32px_rgba(0,0,0,0.18)] lg:mt-0"
           >
-            Get directions
-            <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
-        </div>
-        <div
-          class="index-map-frame group mt-8 overflow-hidden rounded-2xl border border-neutral-200/90 bg-white shadow-[0_20px_48px_-28px_rgba(0,0,0,0.14)] ring-1 ring-neutral-900/[0.03] transition duration-500 ease-out hover:shadow-[0_28px_56px_-32px_rgba(0,0,0,0.18)]"
-        >
-          <iframe
-            src="https://www.google.com/maps?q=118+aba+road+garrison+portharcourt&output=embed"
-            title="SmartPhoneHub store location: 118 Aba Road, Garrison, Port Harcourt"
-            class="h-[320px] w-full border-0 md:h-[400px]"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          />
+            <iframe
+              src="https://www.google.com/maps?q=118+aba+road+garrison+portharcourt&output=embed"
+              title="SmartPhoneHub store location: 118 Aba Road, Garrison, Port Harcourt"
+              class="h-[280px] w-full border-0 sm:h-[320px] md:h-[380px] lg:h-full lg:min-h-[360px]"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -526,6 +712,7 @@ let heroSubTimer: ReturnType<typeof setTimeout> | null = null
 
 const hero2Ref = ref<HTMLElement | null>(null)
 const hero3Ref = ref<HTMLElement | null>(null)
+const spotlightRef = ref<HTMLElement | null>(null)
 const gridRef = ref<HTMLElement | null>(null)
 const trustRef = ref<HTMLElement | null>(null)
 const tradeRef = ref<HTMLElement | null>(null)
@@ -535,6 +722,54 @@ const mapRef = ref<HTMLElement | null>(null)
 const mapsDirectionsUrl = 'https://www.google.com/maps/dir/?api=1&destination=118+Aba+Road+Garrison+Port+Harcourt'
 
 const { data: storeContent } = await useStoreContent()
+
+type CategoryIconName = 'phone' | 'laptop' | 'tablet' | 'watch' | 'earbuds' | 'accessories'
+
+function categoryIconForSlug(slug: string): CategoryIconName {
+  const s = slug.toLowerCase()
+  if (s.includes('phone'))
+    return 'phone'
+  if (s.includes('laptop'))
+    return 'laptop'
+  if (s.includes('tablet'))
+    return 'tablet'
+  if (s.includes('watch'))
+    return 'watch'
+  if (s.includes('audio') || s.includes('earbud'))
+    return 'earbuds'
+  if (s.includes('game'))
+    return 'accessories'
+  if (s.includes('accessor'))
+    return 'accessories'
+  return 'accessories'
+}
+
+const spotlightItems = [
+  {
+    tag: 'Phones',
+    title: 'The lineup worth upgrading for',
+    blurb: 'Latest models with strong trade-in value when you switch.',
+    image: '/images/iphone16-sph2.jpg',
+    to: '/store/phones',
+    cta: 'Shop phones',
+  },
+  {
+    tag: 'Gaming',
+    title: 'Console-ready setups',
+    blurb: 'Gear up for the next session with controllers and more.',
+    image: '/images/ps5.jpg',
+    to: '/store/gaming',
+    cta: 'Shop gaming',
+  },
+  {
+    tag: 'Audio',
+    title: 'Sound you can feel',
+    blurb: 'Headphones and earbuds for work, travel, and downtime.',
+    image: '/images/beatsheadphone.jpg',
+    to: '/store/audio',
+    cta: 'Shop audio',
+  },
+]
 
 const indexCategoryBlurbFallback = 'Phones, audio, gaming, laptops and accessories.'
 
@@ -566,6 +801,7 @@ const indexCategoryCards = computed(() => {
     tagline: cat.description?.trim() || `Shop ${cat.name}.`,
     buyLink: `/store/${cat.slug}`,
     image: cat.image,
+    icon: categoryIconForSlug(cat.slug),
   }))
 })
 
@@ -573,7 +809,7 @@ const { observe } = useScrollReveal({ threshold: 0.08, rootMargin: '0px 0px -60p
 
 onMounted(() => {
   if (import.meta.client) {
-    ;[hero2Ref, hero3Ref, gridRef, trustRef, tradeRef, supportStripRef, mapRef].forEach((r) => observe(r.value))
+    ;[hero2Ref, hero3Ref, spotlightRef, gridRef, trustRef, tradeRef, supportStripRef, mapRef].forEach((r) => observe(r.value))
 
     let raf = 0
     const updateHeroParallax = () => {
@@ -675,6 +911,12 @@ onMounted(() => {
 .hero-home-enter--cta {
   animation-delay: 0.52s;
 }
+.hero-home-enter--hairline {
+  animation-delay: 0.02s;
+}
+.hero-home-enter--pills {
+  animation-delay: 0.6s;
+}
 @keyframes hero-home-enter-up {
   from {
     opacity: 0;
@@ -745,6 +987,70 @@ onMounted(() => {
   }
 }
 
+/* ---- Spotlight ---- */
+.index-spotlight-section .index-spotlight-reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.index-spotlight-section.scroll-reveal-visible .index-spotlight-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+.index-spotlight-reveal--1 {
+  transition-delay: 0.06s;
+}
+.index-spotlight-reveal--2 {
+  transition-delay: 0.14s;
+}
+.index-spotlight-reveal--3 {
+  transition-delay: 0.22s;
+}
+.index-spotlight-section .index-spotlight-card {
+  opacity: 0;
+  transform: translateY(1.125rem);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.index-spotlight-section.scroll-reveal-visible .index-spotlight-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+.index-spotlight-section.scroll-reveal-visible .index-spotlight-card:nth-child(1) {
+  transition-delay: 0.28s;
+}
+.index-spotlight-section.scroll-reveal-visible .index-spotlight-card:nth-child(2) {
+  transition-delay: 0.36s;
+}
+.index-spotlight-section.scroll-reveal-visible .index-spotlight-card:nth-child(3) {
+  transition-delay: 0.44s;
+}
+
+/* ---- Trust header ---- */
+.index-trust-section .index-trust-heading-reveal {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.index-trust-section.scroll-reveal-visible .index-trust-heading-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+.index-trust-heading-reveal--1 {
+  transition-delay: 0.04s;
+}
+.index-trust-heading-reveal--2 {
+  transition-delay: 0.1s;
+}
+.index-trust-heading-reveal--3 {
+  transition-delay: 0.16s;
+}
+
 /* ---- Homepage sections: scroll stagger + motion ---- */
 .index-laptop-section .index-reveal-item,
 .index-watch-section .index-reveal-item,
@@ -806,6 +1112,9 @@ onMounted(() => {
 }
 .index-shop-section.scroll-reveal-visible .index-cat-card:nth-child(5) {
   transition-delay: 0.32s;
+}
+.index-shop-section.scroll-reveal-visible .index-cat-card:nth-child(6) {
+  transition-delay: 0.38s;
 }
 
 .index-cat-card-img {
@@ -878,6 +1187,9 @@ onMounted(() => {
 .index-support-section.scroll-reveal-visible .index-help-card:nth-child(3) {
   transition-delay: 0.26s;
 }
+.index-support-section.scroll-reveal-visible .index-help-card:nth-child(4) {
+  transition-delay: 0.34s;
+}
 
 .index-laptop-img {
   transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
@@ -887,6 +1199,13 @@ onMounted(() => {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .index-spotlight-section .index-spotlight-reveal,
+  .index-spotlight-section .index-spotlight-card,
+  .index-trust-section .index-trust-heading-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
   .index-laptop-section .index-reveal-item,
   .index-watch-section .index-reveal-item,
   .index-shop-header .index-reveal-item,
