@@ -1,58 +1,43 @@
 <template>
-  <div class="min-h-screen bg-neutral-950">
+  <div class="pb-24">
     <!-- Hero -->
-    <section class="relative overflow-hidden border-b border-white/5 py-20 md:py-28">
-      <div
-        class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(120,119,198,0.12),transparent_55%)]"
-        aria-hidden="true"
-      />
-      <div class="relative mx-auto max-w-3xl px-6 text-center">
-        <p class="text-xs font-medium uppercase tracking-[0.25em] text-neutral-500">
-          Repairs & Care
-        </p>
-        <h1 class="mt-4 text-3xl font-light tracking-tight text-white md:text-5xl">
-          Expert repairs for your devices
-        </h1>
-        <p class="mt-5 text-lg text-white/60 md:text-xl">
-          Genuine parts, trained technicians, and clear pricing, whether you’re in warranty or not.
-        </p>
-        <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <NuxtLink
-            to="/#find-us"
-            class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition hover:border-white/30 hover:bg-white/10"
-          >
-            Find a store
-            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </NuxtLink>
-          <NuxtLink
-            to="/support"
-            class="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-2.5 text-sm font-medium text-white/90 transition hover:bg-white/5"
-          >
-            Support
-          </NuxtLink>
-        </div>
+    <section class="sph-container pt-14 text-center md:pt-20">
+      <p class="sph-eyebrow">
+        Repairs & Care
+      </p>
+      <h1 class="sph-headline-xl mx-auto mt-2 max-w-3xl">
+        Expert repairs. Done right.
+      </h1>
+      <p class="sph-lead mx-auto mt-4 max-w-2xl text-[#6e6e73]">
+        Quality parts, trained technicians and clear pricing, whether you’re in warranty or not.
+      </p>
+      <div class="mt-8 flex items-center justify-center gap-4">
+        <NuxtLink to="/#find-us" class="sph-btn">
+          Visit the store
+        </NuxtLink>
+        <NuxtLink to="/support" class="sph-btn-outline">
+          Get support
+        </NuxtLink>
       </div>
     </section>
 
     <!-- What we fix -->
-    <section class="border-b border-white/5 py-14 md:py-20">
-      <div class="mx-auto max-w-6xl px-6">
-        <h2 class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
-          What we fix
+    <section class="mt-20 bg-[#f5f5f7] py-20 md:mt-24 md:py-28">
+      <div class="sph-container">
+        <h2 v-reveal class="sph-headline-l text-center">
+          What we fix.
         </h2>
-        <p class="mt-3 max-w-2xl text-white/50">
-          Common repairs and diagnostics for phones, tablets, laptops, and wearables bought from SmartPhoneHub or brought in for service.
-        </p>
-        <ul class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
+        <ul class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
           <li
-            v-for="item in repairServices"
+            v-for="(item, i) in repairServices"
             :key="item.title"
-            class="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-6 backdrop-blur-sm transition hover:border-white/15 hover:bg-white/[0.05]"
+            v-reveal="i % 3"
+            class="rounded-[18px] bg-white p-7"
           >
-            <h3 class="text-base font-medium text-white">{{ item.title }}</h3>
-            <p class="mt-2 text-sm leading-relaxed text-white/55">
+            <h3 class="text-[21px] font-semibold tracking-tight">
+              {{ item.title }}
+            </h3>
+            <p class="mt-2 text-[17px] leading-[1.47] text-[#6e6e73]">
               {{ item.description }}
             </p>
           </li>
@@ -61,56 +46,37 @@
     </section>
 
     <!-- How it works -->
-    <section class="border-b border-white/5 py-14 md:py-20">
-      <div class="mx-auto max-w-6xl px-6">
-        <h2 class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
-          How it works
-        </h2>
-        <ol class="mt-10 grid gap-8 md:grid-cols-3 md:gap-10" role="list">
-          <li v-for="(step, i) in steps" :key="step.title" class="relative">
-            <span
-              class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-sm font-semibold text-white/90"
-              aria-hidden="true"
-            >{{ i + 1 }}</span>
-            <h3 class="mt-4 text-lg font-medium text-white">{{ step.title }}</h3>
-            <p class="mt-2 text-sm leading-relaxed text-white/55">{{ step.body }}</p>
-          </li>
-        </ol>
-      </div>
+    <section class="sph-container py-20 md:py-28">
+      <h2 v-reveal class="sph-headline-l text-center">
+        How it works.
+      </h2>
+      <ol class="mt-14 grid gap-12 md:grid-cols-3 md:gap-8" role="list">
+        <li v-for="(step, i) in steps" :key="step.title" v-reveal="i" class="text-center">
+          <span class="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-[#1d1d1f] text-[17px] font-semibold text-white" aria-hidden="true">
+            {{ i + 1 }}
+          </span>
+          <h3 class="mt-5 text-[21px] font-semibold tracking-tight">
+            {{ step.title }}
+          </h3>
+          <p class="mx-auto mt-2 max-w-xs text-[17px] leading-[1.47] text-[#6e6e73]">
+            {{ step.body }}
+          </p>
+        </li>
+      </ol>
     </section>
 
-    <!-- Warranty note -->
-    <section class="border-b border-white/5 py-14 md:py-16">
-      <div class="mx-auto max-w-3xl px-6 text-center">
-        <h2 class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
-          Warranty & out-of-warranty
+    <!-- Warranty + CTA -->
+    <section class="sph-container">
+      <div v-reveal class="sph-tile px-6 py-16 text-center md:py-24">
+        <h2 class="sph-headline-l mx-auto max-w-2xl">
+          No surprises.
         </h2>
-        <p class="mt-6 text-base leading-relaxed text-white/60">
-          In-warranty repairs follow manufacturer terms where applicable. Out-of-warranty work is quoted before we start. No surprises.
+        <p class="mx-auto mt-4 max-w-xl text-[17px] leading-[1.47] text-[#6e6e73]">
+          In-warranty repairs follow manufacturer terms where applicable. Out-of-warranty work is always quoted before we start.
         </p>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="py-16 md:py-24">
-      <div class="mx-auto max-w-2xl px-6 text-center">
-        <h2 class="text-2xl font-light tracking-tight text-white md:text-3xl">
-          Ready to book or ask a question?
-        </h2>
-        <p class="mt-4 text-white/55">
-          Visit us in store or reach out through Support, and we’ll point you to the right next step.
-        </p>
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="#"
-            class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-2.5 text-sm font-medium text-white transition hover:border-white/30 hover:bg-white/10"
-          >
-            Contact repairs
-          </a>
-          <NuxtLink
-            to="/support"
-            class="text-sm font-medium text-sky-300/90 transition hover:text-sky-200"
-          >
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-6">
+          <a href="#" class="sph-btn">Contact repairs</a>
+          <NuxtLink to="/support" class="sph-link sph-chevron text-[17px]">
             Go to Support
           </NuxtLink>
         </div>
@@ -126,43 +92,43 @@ defineOptions({
 
 const repairServices = [
   {
-    title: 'Screens & glass',
-    description: 'Cracked or unresponsive displays replaced with quality parts and calibration checks.',
+    title: 'Screens and glass',
+    description: 'Cracked or unresponsive displays replaced and calibrated.',
   },
   {
-    title: 'Battery & power',
+    title: 'Battery and power',
     description: 'Battery replacement and charging issues, with diagnostics included.',
   },
   {
-    title: 'Camera & audio',
-    description: 'Camera modules, speakers, and microphones tested and restored.',
+    title: 'Camera and audio',
+    description: 'Cameras, speakers and microphones tested and restored.',
   },
   {
-    title: 'Water & liquid',
-    description: 'Assessment and cleaning where possible; we’ll advise if a full repair is needed.',
+    title: 'Liquid damage',
+    description: 'Assessment and cleaning where possible, with honest advice on next steps.',
   },
   {
-    title: 'Software & setup',
-    description: 'Recovery, updates, and data migration help when hardware is sound.',
+    title: 'Software and setup',
+    description: 'Recovery, updates and data transfer when the hardware is sound.',
   },
   {
     title: 'Diagnostics',
-    description: 'Full device health check before you commit to any repair.',
+    description: 'A full health check before you commit to any repair.',
   },
 ]
 
 const steps = [
   {
-    title: 'Book or drop in',
-    body: 'Visit our store or start from Support with your device model and issue.',
+    title: 'Drop in',
+    body: 'Bring your device to the store, or start from Support with your model and issue.',
   },
   {
-    title: 'Assessment & quote',
-    body: 'We inspect the device and share options and pricing before any work begins.',
+    title: 'Get a quote',
+    body: 'We inspect the device and share your options and pricing before any work begins.',
   },
   {
-    title: 'Repair & pickup',
-    body: 'We complete the repair and test everything, and we’ll notify you when it’s ready.',
+    title: 'Pick it up',
+    body: 'We repair and test everything, then let you know when it’s ready.',
   },
 ]
 </script>

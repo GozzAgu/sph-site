@@ -2,6 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-[#1d1d1f];
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .sph-container {
+    @apply mx-auto w-full max-w-[1024px] px-6;
+  }
+
+  .sph-headline-xl {
+    @apply text-[40px] font-semibold leading-[1.1] tracking-[-0.02em] md:text-[56px] md:leading-[1.07];
+  }
+
+  .sph-headline-l {
+    @apply text-[32px] font-semibold leading-[1.125] tracking-[-0.015em] md:text-[48px] md:leading-[1.08];
+  }
+
+  .sph-headline-m {
+    @apply text-[24px] font-semibold leading-[1.17] tracking-[-0.01em] md:text-[32px] md:leading-[1.125];
+  }
+
+  .sph-lead {
+    @apply text-[19px] leading-[1.42] md:text-[21px] md:leading-[1.38];
+  }
+
+  .sph-eyebrow {
+    @apply text-[14px] font-semibold text-[#6e6e73];
+  }
+
+  .sph-btn {
+    @apply inline-flex items-center justify-center rounded-full bg-[#0071e3] px-[22px] py-[11px] text-[15px] leading-none text-white transition-colors duration-200 hover:bg-[#0077ed] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0071e3]/30 md:text-[17px];
+  }
+
+  .sph-btn-outline {
+    @apply inline-flex items-center justify-center rounded-full border border-[#0071e3] px-[21px] py-[10px] text-[15px] leading-none text-[#0071e3] transition-colors duration-200 hover:bg-[#0071e3] hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0071e3]/30 md:text-[17px];
+  }
+
+  .sph-btn-outline-dark {
+    @apply inline-flex items-center justify-center rounded-full border border-[#2997ff] px-[21px] py-[10px] text-[15px] leading-none text-[#2997ff] transition-colors duration-200 hover:bg-[#2997ff] hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#2997ff]/30 md:text-[17px];
+  }
+
+  .sph-link {
+    @apply text-[#0066cc] underline-offset-2 hover:underline;
+  }
+
+  .sph-link-dark {
+    @apply text-[#2997ff] underline-offset-2 hover:underline;
+  }
+
+  .sph-tile {
+    @apply overflow-hidden rounded-[28px] bg-[#f5f5f7];
+  }
+
+  .sph-card {
+    @apply overflow-hidden rounded-[18px] bg-white shadow-[2px_4px_12px_rgba(0,0,0,0.08)] transition-[transform,box-shadow] duration-300 ease-out hover:scale-[1.01] hover:shadow-[2px_4px_16px_rgba(0,0,0,0.16)];
+  }
+}
+
+.sph-chevron::after {
+  content: '\203A';
+  margin-left: 0.3em;
+}
+
 .scrollbar-hide {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -10,66 +83,28 @@
   display: none;
 }
 
-html {
-  scroll-behavior: smooth;
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
-/* Visible by default so SSR and no-JS show content; JS adds -visible for animation */
-.scroll-reveal {
-  @apply translate-y-8 transition-all duration-700 ease-out;
-}
-
-.scroll-reveal-visible {
-  @apply translate-y-0;
-}
-
-@keyframes sph-float {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    transform: translate3d(0, -10px, 0);
-  }
-}
-
-@keyframes sph-sheen {
-  0% {
-    transform: translateX(-120%) skewX(-18deg);
-  }
-  100% {
-    transform: translateX(120%) skewX(-18deg);
-  }
-}
-
-.sph-float {
-  animation: sph-float 7.5s ease-in-out infinite;
-  will-change: transform;
-}
-
-.sph-sheen {
-  position: absolute;
-  inset: -40%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.08) 45%,
-    rgba(255, 255, 255, 0.14) 50%,
-    rgba(255, 255, 255, 0.08) 55%,
-    transparent 100%
-  );
-  opacity: 0.25;
-  animation: sph-sheen 6.5s ease-in-out infinite;
-  will-change: transform;
-  pointer-events: none;
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sph-float {
-    animation: none;
-    transform: none;
+  html {
+    scroll-behavior: auto;
   }
-  .sph-sheen {
-    animation: none;
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .sph-card:hover {
+    transform: none;
   }
 }
