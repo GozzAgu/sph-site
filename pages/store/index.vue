@@ -2,8 +2,8 @@
   <div class="bg-[#f5f5f7] pb-24">
     <!-- Header -->
     <section class="sph-container flex flex-col gap-6 pt-14 md:flex-row md:items-end md:justify-between md:pt-20">
-      <h1 class="sph-headline-xl max-w-2xl">
-        Store.
+      <h1 class="sph-headline-xl sph-intro max-w-2xl">
+        <span class="sph-gradient-text">Store.</span>
         <span class="text-[#6e6e73]">{{ heroHeadline }}</span>
       </h1>
       <div class="flex flex-col gap-2 text-[14px] md:items-end md:pb-2">
@@ -23,7 +23,7 @@
               <NuxtImg
                 :src="cat.image"
                 alt=""
-                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 format="webp"
               />
             </div>
@@ -53,11 +53,11 @@
                 {{ item.price }}
               </p>
             </div>
-            <div class="mt-auto pt-6">
+            <div class="mt-auto overflow-hidden pt-6">
               <NuxtImg
                 :src="item.image"
                 :alt="item.title"
-                class="aspect-[4/3] w-full object-cover"
+                class="sph-zoom aspect-[4/3] w-full object-cover"
                 format="webp"
               />
             </div>

@@ -3,29 +3,45 @@
     <!-- Hero -->
     <section class="pt-14 text-center md:pt-20">
       <div class="sph-container">
-        <h1 class="sph-headline-xl">
+        <p class="sph-eyebrow sph-intro">
           SmartPhoneHub
-        </h1>
-        <p class="sph-lead mt-2 md:mt-3">
-          Say hello to the latest generation.
         </p>
-        <div class="mt-6 flex items-center justify-center gap-4">
+        <h1 class="sph-headline-xl sph-intro mt-2 md:text-[64px]" style="--intro-step: 1">
+          Shop smart.<br>
+          <span class="sph-gradient-text">Everything in one hub.</span>
+        </h1>
+        <p class="sph-lead sph-intro mx-auto mt-4 max-w-xl text-[#6e6e73]" style="--intro-step: 2">
+          Phones, laptops, gaming and more, with expert help right here in Port Harcourt.
+        </p>
+        <div class="sph-intro mt-8 flex items-center justify-center gap-4" style="--intro-step: 3">
           <NuxtLink to="/store" class="sph-btn">
-            Shop
+            Shop now
           </NuxtLink>
           <NuxtLink to="/#find-us" class="sph-btn-outline">
             Visit us
           </NuxtLink>
         </div>
       </div>
-      <div class="mx-auto mt-10 max-w-[1280px] px-3 md:mt-14 md:px-6">
-        <NuxtImg
-          src="/images/gadgets2-sph.jpg"
-          alt="Phones, laptops and accessories at SmartPhoneHub"
-          class="aspect-[4/3] w-full rounded-[28px] object-cover md:aspect-[21/9]"
-          format="webp"
-          loading="eager"
-        />
+      <div class="mx-auto mt-10 grid max-w-[1280px] grid-cols-2 gap-3 px-3 md:mt-14 md:px-6">
+        <div class="overflow-hidden rounded-[28px]">
+          <NuxtImg
+            src="/images/hero-18pro.jpg"
+            alt="Silver iPhone Pro held in golden evening light"
+            class="sph-intro-image aspect-[2/3] w-full object-cover md:aspect-[4/5]"
+            format="webp"
+            loading="eager"
+          />
+        </div>
+        <div class="overflow-hidden rounded-[28px]">
+          <NuxtImg
+            src="/images/hero-trio-pro.jpg"
+            alt="Black iPhone Pro resting on an iPad Pro"
+            class="sph-intro-image aspect-[2/3] w-full object-cover md:aspect-[4/5]"
+            style="animation-delay: 0.5s"
+            format="webp"
+            loading="eager"
+          />
+        </div>
       </div>
     </section>
 
@@ -35,7 +51,7 @@
         v-for="(tile, i) in promoTiles"
         :key="tile.title"
         v-reveal="i % 2"
-        class="flex flex-col items-center overflow-hidden rounded-[28px] pt-12 text-center md:pt-14"
+        class="group flex flex-col items-center overflow-hidden rounded-[28px] pt-12 text-center md:pt-14"
         :class="tile.dark ? 'bg-black text-white' : 'bg-[#f5f5f7] text-[#1d1d1f]'"
       >
         <p class="sph-eyebrow" :class="tile.dark ? 'text-white/60' : ''">
@@ -50,12 +66,14 @@
         <NuxtLink :to="tile.to" class="sph-btn mt-5">
           Shop
         </NuxtLink>
-        <NuxtImg
-          :src="tile.image"
-          :alt="tile.title"
-          class="mt-10 aspect-[16/11] w-full object-cover"
-          format="webp"
-        />
+        <div class="mt-10 w-full overflow-hidden">
+          <NuxtImg
+            :src="tile.image"
+            :alt="tile.title"
+            class="sph-zoom aspect-[16/11] w-full object-cover"
+            format="webp"
+          />
+        </div>
       </article>
     </section>
 
@@ -82,7 +100,7 @@
                 <NuxtImg
                   :src="card.image"
                   :alt="card.title"
-                  class="h-full w-full object-cover"
+                  class="sph-zoom h-full w-full object-cover"
                   format="webp"
                 />
               </div>
@@ -109,17 +127,19 @@
         </h2>
         <ul class="mt-14 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8" role="list">
           <li v-for="(item, i) in trustItems" :key="item.title" v-reveal="i" class="text-center">
-            <svg class="mx-auto h-9 w-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                v-for="d in item.icon"
-                :key="d"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.25"
-                :d="d"
-              />
-            </svg>
-            <h3 class="mt-4 text-[17px] font-semibold">
+            <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#0098da]/[0.08] text-[#0098da] transition-transform duration-300 hover:scale-110">
+              <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  v-for="d in item.icon"
+                  :key="d"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.25"
+                  :d="d"
+                />
+              </svg>
+            </span>
+            <h3 class="mt-5 text-[17px] font-semibold">
               {{ item.title }}
             </h3>
             <p class="mt-1 text-[14px] leading-[1.43] text-[#6e6e73]">
@@ -133,19 +153,27 @@
     <!-- Trade In -->
     <section class="pb-20 md:pb-28">
       <div class="sph-container">
-        <div v-reveal class="sph-tile px-6 py-16 text-center md:py-24">
+        <div v-reveal class="sph-tile group pt-16 text-center md:pt-24">
           <p class="sph-eyebrow">
             SmartPhoneHub Trade In
           </p>
-          <h2 class="sph-headline-l mx-auto mt-2 max-w-2xl">
-            Get credit toward your next device.
+          <h2 class="sph-headline-l mx-auto mt-2 max-w-2xl px-6">
+            Trade in. <span class="sph-gradient-text">Upgrade smart.</span>
           </h2>
-          <p class="mx-auto mt-4 max-w-xl text-[17px] leading-[1.47] text-[#6e6e73]">
-            Get an instant estimate in store, put the credit toward your next purchase, and we’ll help you wipe your data safely.
+          <p class="mx-auto mt-4 max-w-xl px-6 text-[17px] leading-[1.47] text-[#6e6e73]">
+            Get credit toward your next device. Get an instant estimate in store and we’ll help you wipe your data safely.
           </p>
           <NuxtLink to="/store" class="sph-btn mt-8">
             Get your estimate
           </NuxtLink>
+          <div class="mt-12 overflow-hidden md:mt-16">
+            <NuxtImg
+              src="/images/gadgets2-sph.jpg"
+              alt="Apple Watch box beside a MacBook Pro and iPhone"
+              class="sph-zoom aspect-[16/9] w-full object-cover md:aspect-[21/9]"
+              format="webp"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -176,7 +204,7 @@
     </section>
 
     <!-- Find us -->
-    <section id="find-us" class="scroll-mt-11 bg-[#f5f5f7] py-20 md:py-28">
+    <section id="find-us" class="scroll-mt-16 bg-[#f5f5f7] py-20 md:py-28">
       <div class="sph-container grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:items-center">
         <div v-reveal>
           <h2 class="sph-headline-l">

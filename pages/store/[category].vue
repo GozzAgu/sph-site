@@ -4,10 +4,10 @@
       <NuxtLink to="/store" class="sph-link text-[14px]">
         ‹ Store
       </NuxtLink>
-      <h1 class="sph-headline-xl mt-6">
+      <h1 class="sph-headline-xl sph-intro mt-6">
         {{ categoryName }}
       </h1>
-      <p class="sph-lead mt-3 max-w-2xl text-[#6e6e73]">
+      <p class="sph-lead sph-intro mt-3 max-w-2xl text-[#6e6e73]" style="--intro-step: 1">
         {{ categoryDescription }}
       </p>
     </section>
@@ -15,12 +15,12 @@
     <section class="sph-container mt-12 md:mt-16">
       <ul v-if="categoryProducts.length" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" role="list">
         <li v-for="(product, i) in categoryProducts" :key="product.slug + i" v-reveal="i % 3">
-          <article class="sph-card flex h-full flex-col">
+          <article class="sph-card group flex h-full flex-col">
             <div class="aspect-[4/3] overflow-hidden bg-[#f5f5f7]">
               <NuxtImg
                 :src="product.image"
                 :alt="product.title"
-                class="h-full w-full object-cover"
+                class="sph-zoom h-full w-full object-cover"
                 format="webp"
               />
             </div>

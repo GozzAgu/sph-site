@@ -2,13 +2,13 @@
   <div class="pb-24">
     <!-- Hero -->
     <section class="sph-container pt-14 text-center md:pt-20">
-      <h1 class="sph-headline-xl">
-        SmartPhoneHub Support
+      <h1 class="sph-headline-xl sph-intro">
+        SmartPhoneHub <span class="sph-gradient-text">Support</span>
       </h1>
-      <ul class="mx-auto mt-12 flex max-w-3xl flex-wrap justify-center gap-x-6 gap-y-8 md:gap-x-10" role="list">
+      <ul class="sph-intro mx-auto mt-12 flex max-w-3xl flex-wrap justify-center gap-x-6 gap-y-8 md:gap-x-10" style="--intro-step: 1" role="list">
         <li v-for="cat in productCategories" :key="cat.label">
           <NuxtLink :to="cat.to" class="group flex w-20 flex-col items-center">
-            <span class="flex h-16 w-16 items-center justify-center rounded-full bg-[#f5f5f7] text-[#1d1d1f] transition-colors group-hover:bg-[#e8e8ed]">
+            <span class="flex h-16 w-16 items-center justify-center rounded-full bg-[#f5f5f7] text-[#1d1d1f] transition-[background-color,color,transform] duration-300 group-hover:scale-110 group-hover:bg-[#0098da]/[0.08] group-hover:text-[#0098da]">
               <SupportProductIcon :name="cat.icon" />
             </span>
             <span class="mt-3 text-[14px] text-[#1d1d1f] group-hover:text-[#0066cc]">{{ cat.label }}</span>
@@ -16,7 +16,7 @@
         </li>
       </ul>
 
-      <form class="mx-auto mt-14 max-w-xl" role="search" aria-label="Search support" @submit.prevent>
+      <form class="sph-intro mx-auto mt-14 max-w-xl" style="--intro-step: 2" role="search" aria-label="Search support" @submit.prevent>
         <label class="flex items-center gap-3 rounded-[12px] border border-[#d2d2d7] bg-white px-4 py-3.5 transition focus-within:border-[#0071e3] focus-within:ring-4 focus-within:ring-[#0071e3]/15">
           <svg class="h-[18px] w-[18px] flex-shrink-0 text-[#6e6e73]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

@@ -42,15 +42,23 @@
   }
 
   .sph-btn {
-    @apply inline-flex items-center justify-center rounded-full bg-[#0071e3] px-[22px] py-[11px] text-[15px] leading-none text-white transition-colors duration-200 hover:bg-[#0077ed] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0071e3]/30 md:text-[17px];
+    @apply inline-flex items-center justify-center rounded-full bg-[#0071e3] px-[22px] py-[11px] text-[15px] leading-none text-white transition-[background-color,transform,box-shadow] duration-200 hover:bg-[#0077ed] hover:shadow-[0_6px_20px_rgba(0,113,227,0.35)] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0071e3]/30 md:text-[17px];
   }
 
   .sph-btn-outline {
-    @apply inline-flex items-center justify-center rounded-full border border-[#0071e3] px-[21px] py-[10px] text-[15px] leading-none text-[#0071e3] transition-colors duration-200 hover:bg-[#0071e3] hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0071e3]/30 md:text-[17px];
+    @apply inline-flex items-center justify-center rounded-full border border-[#0071e3] px-[21px] py-[10px] text-[15px] leading-none text-[#0071e3] transition-[background-color,color,transform] duration-200 hover:bg-[#0071e3] hover:text-white active:scale-[0.97] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0071e3]/30 md:text-[17px];
   }
 
   .sph-btn-outline-dark {
-    @apply inline-flex items-center justify-center rounded-full border border-[#2997ff] px-[21px] py-[10px] text-[15px] leading-none text-[#2997ff] transition-colors duration-200 hover:bg-[#2997ff] hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#2997ff]/30 md:text-[17px];
+    @apply inline-flex items-center justify-center rounded-full border border-[#2997ff] px-[21px] py-[10px] text-[15px] leading-none text-[#2997ff] transition-[background-color,color,transform] duration-200 hover:bg-[#2997ff] hover:text-white active:scale-[0.97] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#2997ff]/30 md:text-[17px];
+  }
+
+  .sph-gradient-text {
+    @apply bg-gradient-to-r from-[#0079b8] via-[#0098da] to-[#64c2ee] bg-clip-text text-transparent;
+  }
+
+  .sph-zoom {
+    @apply transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04];
   }
 
   .sph-link {
@@ -95,6 +103,37 @@
   transform: none;
 }
 
+@keyframes sph-intro {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sph-intro-image {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.sph-intro {
+  animation: sph-intro 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--intro-step, 0) * 120ms);
+}
+
+.sph-intro-image {
+  animation: sph-intro-image 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -104,7 +143,12 @@
     transform: none;
     transition: none;
   }
-  .sph-card:hover {
-    transform: none;
+  .sph-intro,
+  .sph-intro-image {
+    animation: none;
+  }
+  .sph-card:hover,
+  .sph-zoom {
+    transform: none !important;
   }
 }

@@ -1,9 +1,9 @@
 <template>
   <div class="min-h-screen bg-white">
     <header class="fixed inset-x-0 top-0 z-50 border-b border-black/[0.06] bg-[rgba(250,250,252,0.8)] backdrop-blur-xl backdrop-saturate-150">
-      <nav class="mx-auto flex h-11 max-w-[1024px] items-center justify-between px-6 text-[12px] text-[#1d1d1f]/80">
+      <nav class="mx-auto flex h-16 max-w-[1024px] items-center justify-between px-6 text-[14px] text-[#1d1d1f]/80">
         <NuxtLink to="/" class="flex items-center transition-opacity hover:opacity-70" aria-label="SmartPhoneHub home">
-          <img src="/sphLogo.png" alt="SmartPhoneHub" class="h-6 w-auto">
+          <img src="/sphLogo.png" alt="SmartPhoneHub" class="h-12 w-auto">
         </NuxtLink>
         <div class="hidden items-center gap-10 md:flex">
           <NuxtLink
@@ -54,7 +54,7 @@
         aria-modal="true"
         aria-label="Navigation menu"
       >
-        <div class="flex h-11 items-center justify-end px-6">
+        <div class="flex h-16 items-center justify-end px-6">
           <button
             type="button"
             class="text-[#1d1d1f]/80 transition-colors hover:text-[#1d1d1f]"
@@ -82,7 +82,7 @@
       </div>
     </Transition>
 
-    <main class="pt-11">
+    <main class="pt-16">
       <slot />
     </main>
 

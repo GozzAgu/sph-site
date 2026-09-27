@@ -2,16 +2,16 @@
   <div class="pb-24">
     <!-- Hero -->
     <section class="sph-container pt-14 text-center md:pt-20">
-      <p class="sph-eyebrow">
+      <p class="sph-eyebrow sph-intro">
         Repairs & Care
       </p>
-      <h1 class="sph-headline-xl mx-auto mt-2 max-w-3xl">
-        Expert repairs. Done right.
+      <h1 class="sph-headline-xl sph-intro mx-auto mt-2 max-w-3xl" style="--intro-step: 1">
+        Smart repairs. <span class="sph-gradient-text">Done right.</span>
       </h1>
-      <p class="sph-lead mx-auto mt-4 max-w-2xl text-[#6e6e73]">
+      <p class="sph-lead sph-intro mx-auto mt-4 max-w-2xl text-[#6e6e73]" style="--intro-step: 2">
         Quality parts, trained technicians and clear pricing, whether you’re in warranty or not.
       </p>
-      <div class="mt-8 flex items-center justify-center gap-4">
+      <div class="sph-intro mt-8 flex items-center justify-center gap-4" style="--intro-step: 3">
         <NuxtLink to="/#find-us" class="sph-btn">
           Visit the store
         </NuxtLink>
